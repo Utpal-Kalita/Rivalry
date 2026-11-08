@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
-const Game = dynamic(() => import("./Game"), { ssr: false, loading: () => <div className="h-full w-full bg-[#151515]" /> });
+const Game = dynamic(() => import("./Game"), { ssr: false, loading: () => null });
+/** The hero's background: a computer-played run drawn straight onto a full-bleed canvas. */
 export default function HeroGame() {
-  return <Game seed="rivalry-attract" difficulty="medium" mode="fastest" demo className="h-full w-full [&_canvas]:!h-full [&_canvas]:!w-full [&_canvas]:object-cover" label="A computer-played run through an Obstacle Rush level" />;
+  return <Game seed="rivalry-attract" difficulty="medium" mode="fastest" demo asCanvas className="absolute inset-x-0 bottom-0 top-16 z-0 !m-0 !h-[calc(100%-4rem)] !w-full bg-[#151515] object-cover" />;
 }

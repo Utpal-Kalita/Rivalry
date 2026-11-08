@@ -1,0 +1,396 @@
+{
+ "start": "2026-11-08T08:30:33.382Z",
+ "round": 3,
+ "idle": 0,
+ "errors": 0,
+ "status": "open",
+ "history": [
+  {
+   "at": "2026-11-08T08:51:34.321Z",
+   "mode": "hook",
+   "host": "claude",
+   "decision": "block",
+   "reason": "a build is active in /home/user/Rivalry, but no page was found in /home/user/Rivalry, so nothing was checked. If you are stopping to ask the user something, jus",
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-08T08:53:58.573Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 68,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-08T08:54:02.325Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 68,
+   "round": 1,
+   "reused": true,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-08T09:11:40.976Z",
+   "mode": "manual",
+   "status": "fail",
+   "fails": 2,
+   "round": 2,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-08T09:14:22.761Z",
+   "mode": "manual",
+   "status": "open",
+   "fails": 2,
+   "round": 3,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": null,
+  "dir": "/home/user/Rivalry",
+  "kind": "gaming",
+  "start": "2026-11-08T08:30:33.382Z",
+  "by": "start.mjs",
+  "url": "http://127.0.0.1:3100/",
+  "category": "friend challenges in a browser platformer",
+  "primary": "Create a challenge"
+ },
+ "setupTold": true,
+ "session": "014486c0-f670-520b-aef6-466e3f4e721d",
+ "at": "2026-11-08T09:14:22.761Z",
+ "manual": true,
+ "roundKey": "37155b1759be29fa:930b6d23",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "37155b1759be29fa",
+ "page": "http://127.0.0.1:3100/",
+ "found": {
+  "fails": [
+   {
+    "check": "shader-lint",
+    "where": "chunks/8f005c66.84c026c6d8d64d38.js \"__DIST__\"",
+    "msg": "a shader uses \"__DIST__\" as a name (line 11: const float DIST = __DIST__;): GLSL ES reserves it, so a strict GPU rejects the whole shader and the picture stays empty",
+    "fix": "rename it (flat, smooth, centroid, sample, patch, input, output, filter and the rest are GLSL ES reserved words)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "shader-lint"
+    ],
+    "wheres": [
+     "chunks/8f005c66.84c026c6d8d64d38.js \"__DIST__\""
+    ]
+   },
+   {
+    "check": "shader-lint",
+    "where": "chunks/8f005c66.84c026c6d8d64d38.js \"__SIZE__\"",
+    "msg": "a shader uses \"__SIZE__\" as a name (line 12: const float SIZE = min(__SIZE__, PI * 2.0);): GLSL ES reserves it, so a strict GPU rejects the whole shader and the picture stays empty",
+    "fix": "rename it (flat, smooth, centroid, sample, patch, input, output, filter and the rest are GLSL ES reserved words)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "shader-lint"
+    ],
+    "wheres": [
+     "chunks/8f005c66.84c026c6d8d64d38.js \"__SIZE__\""
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#main > section.relative.flex / main#main > section.screen:nth-of-type(2)",
+    "msg": "110px between these sections, -67% against the median 333px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "main#main > section.relative.flex / main#main > section.screen:nth-of-type(2)"
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#main > section.screen:nth-of-type(2) / section#how",
+    "msg": "445px between these sections, +153% against the median 176px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "main#main > section.screen:nth-of-type(2) / section#how"
+    ]
+   },
+   {
+    "check": "sparse",
+    "where": "section.screen section.screen \"Open challengesSee every challen\"",
+    "msg": "its content fills 45% of its screen; merge it or give it its visual (0.55 is the aim)",
+    "fix": "fill the section or make it a screen shorter",
+    "widths": [
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "sparse"
+    ],
+    "wheres": [
+     "section.screen section.screen \"Open challengesSee every challen\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "no-visual",
+    "where": "main#main > section.screen:nth-of-type(4) \"Scores the browser cannot fake\"",
+    "msg": "pictures, effects and mocks cover 18% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "main#main > section.screen.border-t:nth-of-type(6) \"Stakes settled on Solana devnet\"",
+    "msg": "pictures, effects and mocks cover 21% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "fade-cut",
+    "where": "section.screen:nth-of-type(4) > div.wrap.grid > div.card.overflow-hidden > pre.whitespace-pre-wrap.break-all \"{ \"sessionId\": \"q7Lm2k…\", \"nonce\": \"9f1c\"",
+    "msg": "a line of div.card.overflow-hidden fades out under its edge (\"{ \"sessionId\": \"q7Lm2k\"): drawn at a fraction of #dddddd on #1c1c1c, half-erased",
+    "fix": "fit the mock's rows inside its panel (fewer rows, a taller panel), or end the fade below the last whole row: no row half-erased",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-length",
+    "where": "main#main > section.screen.border-t:nth-of-type(6) \"Stakes settled on Solana devnet\"",
+    "msg": "1 section over 90 words a screen outside the UI mocks (\"Stakes settled on Solana\" 91); 54 words a screen across the page (323 words in 6 screens): a tech page says it in about 80 or fewer",
+    "fix": "cut every section to its heading, one line and the product UI: the UI says the rest; no second paragraph, no list of feature sentences",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "effect-kind",
+    "where": "main#main > section.relative.flex > canvas.absolute.inset-x-0",
+    "msg": "particle code or heavy canvas 2D drawing on a gaming page (8640 shapes a second): check it is a deliberate scene",
+    "fix": "keep particles to the one big scene, or take them off",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "empty-area",
+    "where": "footer.closing.screen \"Make a level and send the link\"",
+    "msg": "42% of the section is empty: 304px of empty rows between its content, in its 720px of rows (WARN over 35%, FAIL over 50%)",
+    "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "share-meta",
+    "where": "head",
+    "msg": "the head lacks og:image: a shared link shows no picture or title of its own",
+    "fix": "copy the head block of starter.html: og tags, twitter:card, the icon and theme-color (references/system.md, Head)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-air",
+    "where": "main#main > section.screen:nth-of-type(2) / section#how",
+    "msg": "535px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
+    "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-air",
+    "where": "main#main > section.screen:nth-of-type(2) \"Open challengesSee every challengeHighes\"",
+    "msg": "the content fills 40.6% of the section's height (366 of 900px): 55% or more (40% WARN) (SR-3)",
+    "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-air",
+    "where": "main#main > section.screen:nth-of-type(4) \"Scores the browser cannot fakeThe game s\"",
+    "msg": "the content fills 52.2% of the section's height (470 of 900px): 55% or more (40% WARN) (SR-3)",
+    "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "main#main > section.screen:nth-of-type(2) \"Open challenges\"",
+    "msg": "pictures, effects and mocks cover 21% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#main > section.relative.flex / main#main > section.screen:nth-of-type(2)",
+    "msg": "111px between these sections, -37% against the median 176px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "empty-area",
+    "where": "main#main > section.screen:nth-of-type(2) \"Open challenges\"",
+    "msg": "37% of the section is empty: 256px under its last (a.card-link.flex:nth-of-type(1)), in its 679px of rows (WARN over 35%, FAIL over 50%)",
+    "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "fold-cut",
+    "where": "div.wrap.relative > div.hero-text.enter > div.mt-8.flex > a.btn-ghost \"Browse open challenges\"",
+    "msg": "the hero's button \"Browse open challenges\" is cut by the bottom of the first screen (19px of its 44px below the fold)",
+    "fix": "size the hero so the heading ends above the fold, or starts below it",
+    "widths": [
+     320
+    ],
+    "from": "consistency"
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 115,
+   "layout": 13
+  }
+ },
+ "open": [
+  {
+   "check": "section-gaps",
+   "where": "main#main > section.screen:nth-of-type(2) / section#how",
+   "msg": "445px between these sections, +153% against the median 176px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "main#main > section.screen:nth-of-type(2) / section#how"
+   ]
+  },
+  {
+   "check": "sparse",
+   "where": "section.screen section.screen \"Open challengesSee every challen\"",
+   "msg": "its content fills 45% of its screen; merge it or give it its visual (0.55 is the aim)",
+   "fix": "fill the section or make it a screen shorter",
+   "widths": [
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "sparse"
+   ],
+   "wheres": [
+    "section.screen section.screen \"Open challengesSee every challen\""
+   ]
+  }
+ ],
+ "waived": [
+  {
+   "check": "shader-lint",
+   "where": "chunks/8f005c66.84c026c6d8d64d38.js \"__DIST__\"",
+   "msg": "a shader uses \"__DIST__\" as a name (line 11: const float DIST = __DIST__;): GLSL ES reserves it, so a strict GPU rejects the whole shader and the picture stays empty",
+   "fix": "rename it (flat, smooth, centroid, sample, patch, input, output, filter and the rest are GLSL ES reserved words)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "shader-lint"
+   ],
+   "wheres": [
+    "chunks/8f005c66.84c026c6d8d64d38.js \"__DIST__\""
+   ],
+   "reason": "Phaser 3 internal shader template token, string-replaced with a number before the shader is compiled; not our code and never reaches the GPU as a name"
+  },
+  {
+   "check": "shader-lint",
+   "where": "chunks/8f005c66.84c026c6d8d64d38.js \"__SIZE__\"",
+   "msg": "a shader uses \"__SIZE__\" as a name (line 12: const float SIZE = min(__SIZE__, PI * 2.0);): GLSL ES reserves it, so a strict GPU rejects the whole shader and the picture stays empty",
+   "fix": "rename it (flat, smooth, centroid, sample, patch, input, output, filter and the rest are GLSL ES reserved words)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "shader-lint"
+   ],
+   "wheres": [
+    "chunks/8f005c66.84c026c6d8d64d38.js \"__SIZE__\""
+   ],
+   "reason": "Phaser 3 internal shader template token, string-replaced with a number before the shader is compiled; not our code and never reaches the GPU as a name"
+  },
+  {
+   "check": "section-gaps",
+   "where": "main#main > section.relative.flex / main#main > section.screen:nth-of-type(2)",
+   "msg": "110px between these sections, -67% against the median 333px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "main#main > section.relative.flex / main#main > section.screen:nth-of-type(2)"
+   ],
+   "reason": "Hero is a full-screen game canvas with its text box docked low; both sections are exactly one screen, so the gap is the hero box margin, not uneven section spacing"
+  }
+ ],
+ "warnCount": 14,
+ "openTold": true
+}

@@ -20,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..600&family=Martian+Mono:wght@400..500&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen bg-bg">
-        <a href="#main" className="skip btn-primary">Skip to content</a>
         <Nav />
         <main id="main">{children}</main>
         <Footer />

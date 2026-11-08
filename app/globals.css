@@ -7,11 +7,13 @@ html { background: #111111; color: #f2f2f2; }
 body { font-family: "Archivo", system-ui, sans-serif; font-stretch: 100%; -webkit-font-smoothing: antialiased; }
 h1, h2, h3 { font-weight: 500; font-stretch: 110%; letter-spacing: -0.03em; }
 :focus-visible { outline: 2px solid #bfa38d; outline-offset: 3px; border-radius: 6px; }
-.skip { position: absolute; left: 16px; top: -60px; z-index: 100; }
-.skip:focus { top: 12px; }
+.skip { position: absolute; left: 0; top: -60px; z-index: 100; }
+.skip:focus { top: 10px; }
 
 @layer components {
-  .wrap { @apply mx-auto w-full max-w-wrap px-4 sm:px-8; }
+  .wrap { margin-inline: auto; width: min(100% - 32px, 1240px); }
+  .screen { @apply flex flex-col pb-16 pt-28; min-height: 100svh; }
+  @media (min-width: 1024px) { .screen { height: 100svh; min-height: 0; padding-top: 112px; padding-bottom: 72px; } }
   .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition duration-150 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none; }
   .btn-primary { @apply btn bg-accent text-bg hover:bg-accent-hi hover:-translate-y-px; }
   .btn-ghost { @apply btn border border-line text-ink hover:border-muted hover:-translate-y-px; }

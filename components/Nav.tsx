@@ -8,8 +8,9 @@ const LINKS = [["/discover", "Challenges"], ["/practice", "Practice"], ["/#how",
 export default function Nav() {
   const [me] = useMe(); const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-bg/90 backdrop-blur">
-      <div className="wrap flex h-16 items-center justify-between gap-6">
+    <header className="nav fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-bg/90 backdrop-blur">
+      <div className="wrap relative flex h-16 items-center justify-between gap-6">
+        <a href="#main" className="skip btn-primary">Skip to content</a>
         <Link href="/" className="flex min-h-[44px] items-center gap-2 text-lg font-medium tracking-tight" aria-label="Rivalry home">
           <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden><rect x="6" y="5" width="20" height="23" rx="5" fill="#bfa38d"/><rect x="16" y="11" width="5" height="5" fill="#111"/></svg>
           Rivalry

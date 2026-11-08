@@ -1,25 +1,30 @@
 import Link from "next/link";
+import LevelArt from "./LevelArt";
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-[#0c0c0c]">
-      <div className="wrap grid gap-10 py-16 md:grid-cols-12">
-        <div className="md:col-span-6">
-          <p className="text-[clamp(40px,7vw,96px)] font-medium leading-none tracking-[-0.04em]" style={{ fontStretch: "120%" }}>Rivalry</p>
-          <p className="mt-4 max-w-sm text-muted">One seeded level, one link, every run replayed on the server. Built for the Solana devnet.</p>
+    <footer className="closing screen border-t border-line bg-[#0c0c0c]" aria-labelledby="close-h">
+      <div className="wrap grid flex-1 content-between gap-10">
+        <div className="grid gap-6 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <h2 id="close-h" className="text-[clamp(32px,4.5vw,56px)] leading-[1.05]">Make a level and send the link</h2>
+            <p className="mt-5 max-w-[46ch] text-lg leading-relaxed text-muted">One seed, one course, every run replayed on the server. Built for the Solana devnet.</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/create" className="btn-primary">Create a challenge</Link>
+              <Link href="/practice" className="btn-ghost">Try a practice run</Link>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-card border border-line lg:col-span-6"><LevelArt seed="rivalry-close" difficulty="hard" from={1200} span={1300} className="block h-full min-h-[200px] w-full" /></div>
         </div>
-        <nav className="grid gap-1 md:col-span-3" aria-label="Footer">
-          <span className="label mb-2">Play</span>
-          <Link className="link w-fit py-2" href="/create">Create a challenge</Link>
-          <Link className="link w-fit py-2" href="/discover">Open challenges</Link>
-          <Link className="link w-fit py-2" href="/practice">Practice run</Link>
-        </nav>
-        <div className="grid content-start gap-1 md:col-span-3">
-          <span className="label mb-2">Network</span>
-          <a className="link w-fit py-2" href="https://explorer.solana.com/?cluster=devnet">Solana devnet explorer</a>
-          <a className="link w-fit py-2" href="https://faucet.solana.com/">Devnet faucet</a>
+        <div className="grid gap-6 border-t border-line pt-8 sm:grid-cols-12">
+          <nav className="flex flex-wrap gap-x-6 sm:col-span-8" aria-label="Footer">
+            <Link className="link flex min-h-[44px] items-center" href="/discover">Open challenges</Link>
+            <Link className="link flex min-h-[44px] items-center" href="/practice">Practice run</Link>
+            <a className="link flex min-h-[44px] items-center" href="https://explorer.solana.com/?cluster=devnet">Devnet explorer</a>
+            <a className="link flex min-h-[44px] items-center" href="https://faucet.solana.com/">Devnet faucet</a>
+          </nav>
+          <p className="flex items-center text-sm text-muted sm:col-span-4 sm:justify-end">Devnet only. No real money moves here.</p>
         </div>
       </div>
-      <div className="wrap border-t border-line py-6 text-sm text-muted">Devnet only. No real money moves through Rivalry.</div>
     </footer>
   );
 }

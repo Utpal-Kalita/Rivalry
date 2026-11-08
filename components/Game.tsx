@@ -7,7 +7,7 @@ export interface Hud { ticks: number; coins: number; totalCoins: number; deaths:
 interface Props {
   seed: string; difficulty: Difficulty; mode: Mode; demo?: boolean; running?: boolean;
   touch?: React.MutableRefObject<number>;
-  onHud?: (h: Hud) => void; onEnd?: (log: InputLog, s: State) => void; className?: string; label?: string;
+  onHud?: (h: Hud) => void; onEnd?: (log: InputLog, s: State) => void; className?: string; label?: string; asCanvas?: boolean;
 }
 
 const C = { sky: 0x111111, far: 0x1a1a1a, mid: 0x222222, ground: 0x2b2b2b, top: 0x3a3a3a, plat: 0x4a4038, spike: 0xe0705a,
@@ -21,8 +21,8 @@ function botMask(s: State, l: Level) {
   return INPUT.RIGHT | ((s.onGround && need) || (!s.onGround && s.vy < 0) ? INPUT.JUMP : 0);
 }
 
-export default function Game({ seed, difficulty, mode, demo, running = true, touch, onHud, onEnd, className, label }: Props) {
-  const host = useRef<HTMLDivElement>(null);
+export default function Game({ seed, difficulty, mode, demo, running = true, touch, onHud, onEnd, className, label, asCanvas }: Props) {
+  const host = useRef<HTMLDivElement>(null); const cv = useRef<HTMLCanvasElement>(null);
   const live = useRef({ running, onHud, onEnd });
   live.current = { running, onHud, onEnd };
 
@@ -30,7 +30,7 @@ export default function Game({ seed, difficulty, mode, demo, running = true, tou
     let game: any; let dead = false;
     (async () => {
       const Phaser = (await import("phaser")).default;
-      if (dead || !host.current) return;
+      if (dead || !(asCanvas ? cv.current : host.current)) return;
       const level = generateLevel(seed, difficulty);
       const limit = mode === "score" ? SCORE_MODE_TICKS : MAX_TICKS;
       let s = initState(level), rec = new Recorder(), acc = 0, ended = false;
@@ -111,12 +111,13 @@ export default function Game({ seed, difficulty, mode, demo, running = true, tou
           g.fillStyle(0x111111).fillRect(s.x + (s.vx < 0 ? 4 : 15), s.y + 9, 6, 6);
         }
       }
-      game = new Phaser.Game({ type: Phaser.AUTO, parent: host.current, backgroundColor: "#111111", scene: Run, banner: false,
-        scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: 960, height: VIEW_H }, fps: { target: 60 },
+      game = new Phaser.Game({ type: asCanvas ? Phaser.CANVAS : Phaser.AUTO, ...(asCanvas ? { canvas: cv.current!, scale: { mode: Phaser.Scale.NONE, width: 960, height: VIEW_H } } : { parent: host.current }), backgroundColor: "#111111", scene: Run, banner: false,
+        ...(asCanvas ? {} : { scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: 960, height: VIEW_H } }), fps: { target: 60 },
         render: { antialias: true }, input: { keyboard: !demo, mouse: false, touch: false } });
     })();
     return () => { dead = true; game?.destroy(true); };
-  }, [seed, difficulty, mode, demo, touch]);
+  }, [seed, difficulty, mode, demo, touch, asCanvas]);
 
+  if (asCanvas) return <canvas ref={cv} className={className} aria-hidden="true" />;
   return <div ref={host} className={className} role="img" aria-label={label ?? "Obstacle Rush game"} />;
 }
