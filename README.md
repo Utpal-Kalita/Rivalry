@@ -2,19 +2,18 @@
 
 **Challenge your friends. Prove your skills. Win.**
 
-Rivalry is a social gaming challenge platform on Solana. Instead of playing alone,
-players create a challenge, share a unique link, and friends compete under identical
-conditions (same seed, same level). Solana provides challenge commitments, prize
-escrow, reward distribution and portable player achievements. Devnet only.
-
-Planned for the **MLH Solana Hackathon, Nov 6-8, 2026** (Gaming Track).
+Rivalry is a social gaming challenge platform planned for Solana. Instead of
+playing alone, players create a challenge, share a unique link, and friends
+compete under identical conditions (same seed, same level). The design uses
+Solana (Devnet) for challenge commitments, prize escrow, reward distribution
+and portable player achievements.
 
 ## Status
 
 **Planning stage.** This repository currently holds documentation only:
 
-- `prd.md` - full product requirements document (the build spec)
-- `resources.md` - MLH Hacker Resources plus game-specific references
+- `prd.md` - full product requirements document (the build spec; status: Hackathon MVP)
+- `resources.md` - hacker resources plus game-specific references
 
 No game code has been written yet. Nothing here is deployed. Implementation is
 scheduled after the TrustLayer build, following the 48-hour roadmap in `prd.md`
