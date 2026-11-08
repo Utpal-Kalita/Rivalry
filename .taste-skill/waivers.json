@@ -1,0 +1,5 @@
+[
+  {"check": "shader-lint", "target": "__DIST__", "reason": "Phaser 3 internal shader template token, string-replaced with a number before the shader is compiled; not our code and never reaches the GPU as a name"},
+  {"check": "shader-lint", "target": "__SIZE__", "reason": "Phaser 3 internal shader template token, string-replaced with a number before the shader is compiled; not our code and never reaches the GPU as a name"},
+  {"check": "section-gaps", "target": "section.relative.flex / main#main > section.screen:nth-of-type(2)", "reason": "Hero is a full-screen game canvas with its text box docked low; both sections are exactly one screen, so the gap is the hero box margin, not uneven section spacing"}
+]
