@@ -10,27 +10,34 @@ and portable player achievements.
 
 ## Status
 
-**Planning stage.** This repository currently holds documentation only:
+**MVP built.** Next.js 15 + TypeScript + Tailwind, Phaser 3, Solana devnet.
 
-- `prd.md` - full product requirements document (the build spec; status: Hackathon MVP)
-- `resources.md` - hacker resources plus game-specific references
+## Run it
 
-No game code has been written yet. Nothing here is deployed. Implementation is
-scheduled after the TrustLayer build, following the 48-hour roadmap in `prd.md`
-(section 18).
+```bash
+npm install
+cp .env.example .env.local   # optional: RIVALRY_SECRET, ESCROW_SECRET_KEY for SOL prizes
+npm run dev                  # http://localhost:3000
+npm test                     # level generation + replay verification tests
+```
 
-## Planned MVP (from the PRD)
+## How it works
 
-- One polished 2D obstacle-course game ("Obstacle Rush") built with Phaser 3
-- Deterministic, seed-based level generation so every participant plays the same level
-- Challenge creation with unique shareable links
-- Server-verified results and leaderboards (anti-cheat by design)
-- Solana Devnet integration: challenge commitments, prize escrow, reward distribution (Anchor)
+- **Obstacle Rush** (`lib/game/sim.ts`): seeded level generator + fixed 60 Hz physics in plain TypeScript.
+  Phaser (`components/Game.tsx`) only renders and reads input; the same simulation runs in the browser and on the server.
+- **Challenges**: create, share `/c/<id>`, join, play. Seed is drawn on the server, hidden until the
+  challenge closes, and committed as `sha256(id|seed|difficulty|mode)`.
+- **Verification** (`app/api/results/submit`): the client sends only its input log. The server replays it,
+  recomputes time/score, and rejects runs that don't finish, arrive faster than real time, reuse a nonce,
+  come from non-participants or after the deadline. Results are HMAC-signed (`/api/results/verify`).
+- **Solana devnet** (`lib/server/solana.ts`, `lib/client/wallet.ts`): players link a wallet by signing a message;
+  the creator signs a Memo transaction carrying the commitment (plus the prize transfer to escrow), which the
+  server checks on-chain; the winner claims and the escrow wallet pays out. All transactions link to the explorer.
+- **Profiles**: wins, win rate, best score, fastest finish, achievements, history.
 
-## Planned stack
-
-Next.js + TypeScript + Tailwind CSS, Phaser 3 game engine, Node.js backend,
-Supabase/PostgreSQL, Solana (Devnet) with Anchor and Wallet Adapter.
+Storage is a JSON file in `.data/` (swap `lib/server/db.ts` for Supabase in production; a serverless host
+needs a real database). Wallets: Phantom / Solflare / Backpack via their injected providers, set to devnet.
+Design tokens were dealt with the `design-taste-frontend` skill (palette lunar-grey-bronze, Archivo).
 
 ## PRD source
 

@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { background: #111111; color: #f2f2f2; }
+body { font-family: "Archivo", system-ui, sans-serif; font-stretch: 100%; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-weight: 500; font-stretch: 110%; letter-spacing: -0.03em; }
+:focus-visible { outline: 2px solid #bfa38d; outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 100; }
+.skip:focus { top: 12px; }
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-wrap px-4 sm:px-8; }
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition duration-150 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-accent text-bg hover:bg-accent-hi hover:-translate-y-px; }
+  .btn-ghost { @apply btn border border-line text-ink hover:border-muted hover:-translate-y-px; }
+  .card { @apply rounded-card border border-line bg-surface; }
+  .card-link { @apply card block transition duration-200 hover:-translate-y-0.5 hover:border-[#3a3a3a]; }
+  .label { @apply font-mono text-[11px] uppercase tracking-[0.12em] text-muted; }
+  .field { @apply min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 text-[16px] text-ink outline-none transition focus:border-accent; }
+  .link { @apply underline decoration-line underline-offset-4 transition hover:decoration-accent; }
+  .eyebrow { @apply font-mono text-xs uppercase tracking-[0.14em] text-accent; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@keyframes enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.enter > * { animation: enter .7s cubic-bezier(.2,.7,.2,1) both; }
+.enter > *:nth-child(2) { animation-delay: .08s; } .enter > *:nth-child(3) { animation-delay: .16s; } .enter > *:nth-child(4) { animation-delay: .24s; }
